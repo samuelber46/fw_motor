@@ -15,7 +15,7 @@
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-
+  <link rel="icon" href="{{ asset('favicon.ico') }}" />
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -58,6 +58,10 @@
                 </li>
               @endif
             @endauth
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'about' ? 'active' : '' }}"
+                href="{{ url('about') }}"><i class="material-icons">groups</i>About Us</a>
+            </li>
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ms-auto">
@@ -102,6 +106,12 @@
       @yield('content')
     </main>
   </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#00B768" fill-opacity="1"
+      d="M0,224L40,224C80,224,160,224,240,202.7C320,181,400,139,480,154.7C560,171,640,245,720,272C800,299,880,277,960,256C1040,235,1120,213,1200,213.3C1280,213,1360,235,1400,245.3L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+    </path>
+  </svg>
+
   @include('sweetalert::alert')
 </body>
 

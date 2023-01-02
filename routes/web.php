@@ -46,3 +46,7 @@ Route::group(['middleware' => ['auth', 'is_admin'], "prefix" => "motor", "as" =>
     Route::put('/{id}', [App\Http\Controllers\MotorController::class, 'update'])->name('update');
     Route::delete('/{id}', [App\Http\Controllers\MotorController::class, 'destroy'])->name('destroy');
 });
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');

@@ -1,5 +1,13 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <style>
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: contain;
+    padding: 10px;
+  }
+
   .explore {
     margin-top: 120px;
   }
@@ -15,14 +23,13 @@
   }
 
   .keterangan .gambar {
-    width: 480px;
-    border-radius: 10%;
+    width: 700px;
+    /* border-radius: 10%; */
   }
 
   .keterangan .logo {
     width: 100px;
   }
-
 
   .keterangan p {
     font-size: 28px;
@@ -49,7 +56,7 @@
     font-size: 24px;
     text-align: left;
     font-weight: 500;
-    color: #00C569;
+    color: #00c569;
   }
 
   .explore hr {
@@ -58,35 +65,28 @@
     align-content: center;
     border: 3px solid black;
   }
-
-  .card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: contain;
-    padding: 10px;
-  }
 </style>
 @section('content')
   <div class="container keterangan">
     <div class="row d-flex align-items-center">
-      <div class="col-md-6">
-        <img class="img-fluid gambar" src="{{ url('images') }}/motor_keren.jpg" alt="">
+      <div class="col-md-7" data-aos="zoom-in-up" data-aos-duration="1000">
+        <img class="img-fluid gambar" src="{{ url('images') }}/motor_keren3.png" alt="">
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5" data-aos="zoom-in-up" data-aos-duration="1000">
         <img class="logo" src="{{ url('images') }}/logo_green.png" alt="">
-        <h3>Motornya <span>keren</span> kita pun <span>senang</span></h3>
-        <p>Kami menyediakan motor-motor terbaik yang anda inginkan dan apa yang anda butuhkan</p>
+        <h3><span>Wujudkan</span> kendaraan impianmu bersama <span>FW MOTORS</span></h3>
+        <p>Dapatkan berbagai kendaraan terbaik dengan penawaran yang menarik </p>
       </div>
     </div>
   </div>
 
   <div class="container quote">
     <div class="row justify-content-center align-items-center">
-      <div class="col-md-5">
-        <h3>Motosam siap <br> membantu</h3>
+      <div class="col-md-5"data-aos="fade-down-right" data-aos-duration="1000">
+        <h3>FW <br> Motors</h3>
       </div>
-      <div class="col-md-6">
-        <h5>Puaskan keinginan anda berkendara</h5>
+      <div class="col-md-6"data-aos="fade-down-left" data-aos-duration="1000">
+        <h5>Solusi Impian Berkendara</h5>
       </div>
     </div>
   </div>
@@ -106,7 +106,7 @@
               <p>{{ $motor->silinder }} CC</p>
               <p style="color: #00C569"><strong>Rp.{{ number_format($motor->harga) }}</strong></p>
               <p class="card-text">{{ $motor->details }}</p>
-              @if (Auth::check())
+              @if (Auth::user())
                 @if (!Auth::user()->is_admin)
                   <a href="{{ url('order') }}/{{ $motor->id }}" class="btn btn-success">Detail</a>
                 @endif
@@ -123,4 +123,8 @@
   <div class="d-flex justify-content-center">
     {{ $motors->links() }}
   </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 @endsection
