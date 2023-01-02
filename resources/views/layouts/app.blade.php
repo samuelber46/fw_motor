@@ -42,14 +42,21 @@
                 href="{{ url('home') }}"><i class="material-icons">explore</i>Explore</a>
             </li>
             @Auth
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'checkout' ? 'active' : '' }}"
-                  href="{{ url('checkout') }}"><i class="material-icons">shopping_cart</i>Cart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'account' ? 'active' : '' }}"
-                  href="{{ url('account') }}"><i class="material-icons">person</i>Account</a>
-              </li>
+              @if (Auth::user()->is_admin === 1)
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'admin' ? 'active' : '' }}"
+                    href="{{ url('motor') }}"><i class="material-icons">admin_panel_settings</i>Motor</a>
+                </li>
+              @else
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'checkout' ? 'active' : '' }}"
+                    href="{{ url('checkout') }}"><i class="material-icons">shopping_cart</i>Cart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'account' ? 'active' : '' }}"
+                    href="{{ url('account') }}"><i class="material-icons">person</i>Account</a>
+                </li>
+              @endif
             @endauth
           </ul>
           <!-- Right Side Of Navbar -->

@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {return view('welcome');});
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -37,11 +38,11 @@ Route::post('account', [App\Http\Controllers\AccountController::class, 'update']
 
 // Make route group for motor that can only accessed by admin
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::get('motor', [App\Http\Controllers\MotorController::class, 'index'])->name('motor');
-    Route::get('motor/create', [App\Http\Controllers\MotorController::class, 'create']);
-    Route::post('motor', [App\Http\Controllers\MotorController::class, 'store']);
-    Route::get('motor/{id}/edit', [App\Http\Controllers\MotorController::class, 'edit']);
-    Route::put('motor/{id}', [App\Http\Controllers\MotorController::class, 'update']);
-    Route::delete('motor/{id}', [App\Http\Controllers\MotorController::class, 'destroy']);
+Route::group(['middleware' => ['auth', 'is_admin'], "prefix" => "motor"], function () {
+    Route::get('/', [App\Http\Controllers\MotorController::class, 'index'])->name('motor');
+    Route::get('/create', [App\Http\Controllers\MotorController::class, 'create']);
+    Route::post('/', [App\Http\Controllers\MotorController::class, 'store']);
+    Route::get('/{id}/edit', [App\Http\Controllers\MotorController::class, 'edit']);
+    Route::put('/{id}', [App\Http\Controllers\MotorController::class, 'update']);
+    Route::delete('/{id}', [App\Http\Controllers\MotorController::class, 'destroy']);
 });
