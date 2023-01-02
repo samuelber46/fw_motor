@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Motor;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MotorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'is_admin']);
+    }
+
     public function index()
     {
         $motors = Motor::all();
@@ -20,7 +27,18 @@ class MotorController extends Controller
 
     public function store(Request $request)
     {
-        return redirect()->route('admin.motors.index');
+        $motors = Motor::all();
+
+
+        if ($request->validated()) {
+            $image = $request->file('gambar')->store('assets/car', 'public');
+            $slug = Str::slug($request->nama_motor, '-');
+            Motor::create($request->except('image') + [
+                'image' => $image, 'slug' => $slug
+            ]);
+        }
+        Alert::success('Yay!', 'Data motor berhasil dibuat');
+        return redirect()->route('motor.');
     }
 
     public function edit($id)

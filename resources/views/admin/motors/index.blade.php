@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="card ">
+  <div class="card m-5">
     <div class="card-header d-flex justify-content-between align-items-center ">
-      <h3>Daftar Motor</h3>
+      <h2>Daftar Motor</h2>
       <a href="{{ route('motor.create') }}" class="btn btn-primary ">Tambah Motor</a>
     </div>
     <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
+      @if ($motors->count() > 0)
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <th>
               <th>No</th>
               <th>Nama Motor</th>
               <th>Gambar</th>
@@ -21,40 +22,39 @@
               <th>Detail</th>
               <th>Harga</th>
               <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            @forelse ($motors as $motor)
-              <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $motor->nama_motor }}</td>
-                <td>
-                  <img src="{{ Storage::url($motor->image) }}" width="200" alt="">
-                </td>
-                <td>{{ $motor->stok }}</td>
-                <td>{{ $motor->warna }}</td>
-                <td>{{ $motor->silinder }}</td>
-                <td>{{ $motor->transmisi }}</td>
-                <td>{{ $motor->detail }}</td>
-                <td>{{ $motor->harga }}</td>
-                <td>
-                  <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                  <form onclick="return confirm('anda yakin data dihapus?');" class="d-inline" action="#"
-                    method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger btn-sm">Hapus</button>
-                  </form>
-                </td>
               </tr>
-            @empty
-              <tr>
-                <td colspan="6" class="text-center">Tidak ada data</td>
-              </tr>
-            @endforelse
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              @foreach ($motors as $motor)
+                <tr>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $motor->nama_motor }}</td>
+                  <td>
+                    <img src="{{ Storage::url($motor->image) }}" width="200" alt="">
+                  </td>
+                  <td>{{ $motor->stok }}</td>
+                  <td>{{ $motor->warna }}</td>
+                  <td>{{ $motor->silinder }}</td>
+                  <td>{{ $motor->transmisi }}</td>
+                  <td>{{ $motor->detail }}</td>
+                  <td>{{ $motor->harga }}</td>
+                  <td>
+                    <a href="{{ url('/motor/edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <form onclick="return confirm('anda yakin data dihapus?');" class="d-inline" action="#"
+                      method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-sm btn-danger btn-sm">Hapus</button>
+                    </form>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      @else
+        <h3 class="text-center">Maaf datanya tidak ada :(</h3>
+      @endif
     </div>
   </div>
 @endsection
