@@ -41,21 +41,21 @@ class MotorController extends Controller
         $process = Motor::create($motor);
         if (!$process) {
             Alert::error('Oops...', 'Ada yang salah!');
-            return redirect()->route('motor.create');
+            return redirect()->route('Tambah Motor');
         }
         Alert::success('Yay!', 'Data motor berhasil dibuat');
-        return redirect()->route('motor.');
+        return redirect()->route('Motor');
     }
 
-    public function edit($id)
-    {
-        return view('admin.motors.edit');
-    }
+    // public function edit($id)
+    // {
+    //     return view('admin.motors.edit');
+    // }
 
-    public function update(Request $request, $id)
-    {
-        return redirect()->route('motor.');
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     return redirect()->route('motor.index');
+    // }
 
     public function destroy($id)
     {
@@ -67,6 +67,6 @@ class MotorController extends Controller
         }
         $motor->delete();
         Alert::success('Yay!', 'Data motor berhasil dihapus');
-        return redirect()->route('motor.');
+        return redirect()->route('Motor');
     }
 }

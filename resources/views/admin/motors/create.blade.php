@@ -6,7 +6,7 @@
       <h2>Tambah Motor</h2>
     </div>
     <div class="card-body">
-      <form action="{{ route('motor.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ url('/motor') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group mb-3">
           <label for="nama_motor">Nama Motor <span style="color:red">*</span></label>

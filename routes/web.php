@@ -38,13 +38,13 @@ Route::post('account', [App\Http\Controllers\AccountController::class, 'update']
 
 // Make route group for motor that can only accessed by admin
 
-Route::group(['middleware' => ['auth', 'is_admin'], "prefix" => "motor", "as" => "motor."], function () {
-    Route::get('/', [App\Http\Controllers\MotorController::class, 'index']);
-    Route::get('/create', [App\Http\Controllers\MotorController::class, 'create'])->name('create');
-    Route::post('/', [App\Http\Controllers\MotorController::class, 'store'])->name('store');
-    Route::get('/{id}/edit', [App\Http\Controllers\MotorController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [App\Http\Controllers\MotorController::class, 'update'])->name('update');
-    Route::delete('/{id}', [App\Http\Controllers\MotorController::class, 'destroy'])->name('destroy');
+Route::group(['middleware' => ['auth', 'is_admin'], "prefix" => "motor"], function () {
+    Route::get('/', [App\Http\Controllers\MotorController::class, 'index'])->name('Motor');
+    Route::get('/create', [App\Http\Controllers\MotorController::class, 'create'])->name('Tambah Motor');
+    Route::post('/', [App\Http\Controllers\MotorController::class, 'store']);
+    // Route::get('/{id}/edit', [App\Http\Controllers\MotorController::class, 'edit']);
+    Route::put('/{id}', [App\Http\Controllers\MotorController::class, 'update']);
+    Route::delete('/{id}', [App\Http\Controllers\MotorController::class, 'destroy']);
 });
 
 Route::get('/about', function () {

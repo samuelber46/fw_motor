@@ -44,7 +44,7 @@
             @Auth
               @if (Auth::user()->is_admin)
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center {{ str_contains(Route::currentRouteName(), 'motor.') ? 'active' : '' }}"
+                  <a class="nav-link d-flex align-items-center {{ str_contains(Route::currentRouteName(), 'motor') ? 'active' : '' }}"
                     href="{{ url('motor') }}"><i class="material-icons">two_wheeler</i>Motor</a>
                 </li>
               @else

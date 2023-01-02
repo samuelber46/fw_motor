@@ -4,7 +4,7 @@
   <div class="card m-5">
     <div class="card-header d-flex justify-content-between align-items-center ">
       <h2>Daftar Motor</h2>
-      <a href="{{ route('motor.create') }}" class="btn btn-primary ">Tambah Motor</a>
+      <a href="{{ url('/motor/create') }}" class="btn btn-primary ">Tambah Motor</a>
     </div>
     <div class="card-body">
       @if ($motors->count() > 0)

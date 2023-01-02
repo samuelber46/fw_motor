@@ -10,14 +10,14 @@
 @section('content')
   <div class="row text-center mb-3">
     <div class="col">
-      <h2 style="letter-spacing: 10px; text-transform:uppercase;color:#a1a1a1">Meet Our Team</h2>
+      <h2 style="letter-spacing: 10px; text-transform:uppercase;color:#a1a1a1;font-weight:300">Meet Our Team</h2>
     </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-3">
         <div class="card">
-          <img src="images/Assyifa Khalif2.jpg" class="card-img-top" alt="assyifa">
+          <img src="images/2010631170058.jpg" class="card-img-top" alt="assyifa">
           <div class="card-body">
             <h5 class="card-title">ASSYIFA KHALIF</h5>
             <p class="card-text">2010631170058 | 5B Informatika</p>
