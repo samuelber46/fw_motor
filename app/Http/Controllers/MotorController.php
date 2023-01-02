@@ -27,15 +27,21 @@ class MotorController extends Controller
 
     public function store(Request $request)
     {
-        $motors = Motor::all();
-
-
-        if ($request->validated()) {
-            $image = $request->file('gambar')->store('assets/car', 'public');
-            $slug = Str::slug($request->nama_motor, '-');
-            Motor::create($request->except('image') + [
-                'image' => $image, 'slug' => $slug
-            ]);
+        $image = $request->file('image')->store('assets/motor', 'public');
+        $motor = [
+            'image' => $image,
+            'nama_motor' => $request->nama_motor,
+            'stok' => $request->stok,
+            'warna' => $request->warna,
+            'silinder' => $request->silinder,
+            'transmisi' => $request->transmisi,
+            'details' => $request->details,
+            'harga' => $request->harga,
+        ];
+        $process = Motor::create($motor);
+        if (!$process) {
+            Alert::error('Oops...', 'Ada yang salah!');
+            return redirect()->route('motor.create');
         }
         Alert::success('Yay!', 'Data motor berhasil dibuat');
         return redirect()->route('motor.');
@@ -48,11 +54,19 @@ class MotorController extends Controller
 
     public function update(Request $request, $id)
     {
-        return redirect()->route('admin.motors.index');
+        return redirect()->route('motor.');
     }
 
     public function destroy($id)
     {
-        return redirect()->route('admin.motors.index');
+        // destroy motor with image
+        $motor = Motor::findOrFail($id);
+        $image_path = public_path('storage/' . $motor->image);
+        if (file_exists($image_path)) {
+            unlink('storage/' . $motor->image);
+        }
+        $motor->delete();
+        Alert::success('Yay!', 'Data motor berhasil dihapus');
+        return redirect()->route('motor.');
     }
 }

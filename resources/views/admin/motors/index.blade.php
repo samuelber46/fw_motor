@@ -11,7 +11,6 @@
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
-              <th>
               <th>No</th>
               <th>Nama Motor</th>
               <th>Gambar</th>
@@ -34,14 +33,14 @@
                   </td>
                   <td>{{ $motor->stok }}</td>
                   <td>{{ $motor->warna }}</td>
-                  <td>{{ $motor->silinder }}</td>
+                  <td>{{ $motor->silinder }} CC</td>
                   <td>{{ $motor->transmisi }}</td>
-                  <td>{{ $motor->detail }}</td>
-                  <td>{{ $motor->harga }}</td>
+                  <td>{{ $motor->details }}</td>
+                  <td>{{ 'Rp.' . number_format($motor->harga) }}</td>
                   <td>
-                    <a href="{{ url('/motor/edit') }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form onclick="return confirm('anda yakin data dihapus?');" class="d-inline" action="#"
-                      method="POST">
+                    {{-- <a href="{{ url('/motor/edit') }}" class="btn btn-sm btn-warning">Edit</a> --}}
+                    <form onclick="return confirm('anda yakin data dihapus?');" class="d-inline"
+                      action="{{ url('/motor/' . $motor->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-sm btn-danger btn-sm">Hapus</button>

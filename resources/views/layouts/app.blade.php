@@ -42,10 +42,10 @@
                 href="{{ url('home') }}"><i class="material-icons">explore</i>Explore</a>
             </li>
             @Auth
-              @if (Auth::user()->is_admin === 1)
+              @if (Auth::user()->is_admin)
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center {{ str_contains(Route::currentRouteName(), 'motor.') ? 'active' : '' }}"
-                    href="{{ url('motor') }}"><i class="material-icons">admin_panel_settings</i>Motor</a>
+                    href="{{ url('motor') }}"><i class="material-icons">two_wheeler</i>Motor</a>
                 </li>
               @else
                 <li class="nav-item">
