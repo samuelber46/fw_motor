@@ -10,7 +10,7 @@
 @section('content')
   <div class="row text-center mb-3">
     <div class="col">
-      <h2 class="">DEVELOPED BY</h2>
+      <h2 style="letter-spacing: 10px; text-transform:uppercase;color:#a1a1a1">Meet Our Team</h2>
     </div>
   </div>
   <div class="container">
