@@ -40,7 +40,7 @@ Route::post('account', [App\Http\Controllers\AccountController::class, 'update']
 
 Route::group(['middleware' => ['auth', 'is_admin'], "prefix" => "motor"], function () {
     Route::get('/', [App\Http\Controllers\MotorController::class, 'index'])->name('motor');
-    Route::get('/create', [App\Http\Controllers\MotorController::class, 'create']);
+    Route::get('/create', [App\Http\Controllers\MotorController::class, 'create'])->name('motor.create');
     Route::post('/', [App\Http\Controllers\MotorController::class, 'store']);
     Route::get('/{id}/edit', [App\Http\Controllers\MotorController::class, 'edit']);
     Route::put('/{id}', [App\Http\Controllers\MotorController::class, 'update']);
