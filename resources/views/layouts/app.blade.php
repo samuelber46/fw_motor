@@ -58,6 +58,10 @@
                 </li>
               @endif
             @endauth
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'about' ? 'active' : '' }}"
+                href="{{ url('about') }}"><i class="material-icons">book</i>About</a>
+            </li>
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ms-auto">

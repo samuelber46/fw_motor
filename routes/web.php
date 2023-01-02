@@ -35,6 +35,7 @@ Route::get('confirm_checkout', [App\Http\Controllers\OrderController::class, 'co
 Route::get('account', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
 
 Route::post('account', [App\Http\Controllers\AccountController::class, 'update']);
+Route::get('/about', function () {return view('about');})->name('about');
 
 // Make route group for motor that can only accessed by admin
 
