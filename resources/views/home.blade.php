@@ -106,9 +106,7 @@
               <p>{{ $motor->silinder }} CC</p>
               <p style="color: #00C569"><strong>Rp.{{ number_format($motor->harga) }}</strong></p>
               <p class="card-text">{{ $motor->details }}</p>
-              @if (!Auth::user()->is_admin)
-                <a href="{{ url('order') }}/{{ $motor->id }}" class="btn btn-success">Detail</a>
-              @endif
+              <a href="{{ url('order') }}/{{ $motor->id }}" class="btn btn-success">Detail</a>
             </div>
           </div>
         </div>
