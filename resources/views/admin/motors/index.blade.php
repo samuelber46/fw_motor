@@ -23,7 +23,7 @@
               <th>Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style="vertical-align: middle">
               @foreach ($motors as $motor)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
@@ -43,7 +43,7 @@
                       action="{{ url('/motor/' . $motor->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger btn-sm">Hapus</button>
+                      <button type="submit" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></button>
                     </form>
                   </td>
                 </tr>
