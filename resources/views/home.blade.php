@@ -73,7 +73,7 @@
         <img class="img-fluid gambar" src="{{ url('images') }}/motor_keren3.png" alt="">
       </div>
       <div class="col-md-5" data-aos="zoom-in-up" data-aos-duration="1000">
-        <img class="logo" src="{{ url('images') }}/logo_green.png" alt="">
+        <img class="logo" src="{{ url('images') }}/logo_green.svg" style="width:35%" alt="">
         <h3><span>Wujudkan</span> kendaraan impianmu bersama <span>FW MOTORS</span></h3>
         <p>Dapatkan berbagai kendaraan terbaik dengan penawaran yang menarik </p>
       </div>

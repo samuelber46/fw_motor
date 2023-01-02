@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="{{ url('images') }}/logo.png" width="120" alt="">
+          <img src="{{ url('images') }}/logo.svg" width="200px" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -60,7 +60,7 @@
             @endauth
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'about' ? 'active' : '' }}"
-                href="{{ url('about') }}"><i class="material-icons">groups</i>About Us</a>
+                href="{{ url('about') }}"><i class="material-icons">groups</i> About Us</a>
             </li>
           </ul>
           <!-- Right Side Of Navbar -->
