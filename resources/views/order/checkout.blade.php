@@ -6,12 +6,13 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3 align="center">Cart</h3>
+            <h2 align="center">Cart</h2>
           </div>
           <div class="car-body">
-            <table class="table table-border text-center mt-3">
-              <thead>
-                <tr>
+            @if (!empty($orderDetails))
+              <table class="table table-border text-center mt-3">
+                <thead>
+                  <th>
                   <th>No</th>
                   <th>Image</th>
                   <th>Nama Motor</th>
@@ -19,9 +20,8 @@
                   <th>Harga</th>
                   <th>Total Harga</th>
                   <th>Action</th>
-                </tr>
-              </thead>
-              @if (!empty($orderDetails))
+                  </tr>
+                </thead>
                 <tbody>
                   @php $no = 1; @endphp
                   @foreach ($orderDetails as $orderDetail)
@@ -52,7 +52,11 @@
                     </td>
                   </tr>
                 </tbody>
-            </table>
+              </table>
+            @else
+              <div class="alert alert-danger">
+                <h3 align="center">Your cart is empty :(</h3>
+              </div>
             @endif
           </div>
         </div>

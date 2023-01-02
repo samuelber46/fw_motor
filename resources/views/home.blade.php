@@ -70,7 +70,7 @@
   <div class="container keterangan">
     <div class="row d-flex align-items-center">
       <div class="col-md-7" data-aos="zoom-in-up" data-aos-duration="1000">
-        <img class="img-fluid gambar" src="{{ url('images') }}/motor_keren3.png" alt="">
+        <img class="img-fluid gambar" src="{{ url('images') }}/motor_keren.png" alt="">
       </div>
       <div class="col-md-5" data-aos="zoom-in-up" data-aos-duration="1000">
         <img class="logo" src="{{ url('images') }}/logo_green.svg" style="width:35%" alt="">

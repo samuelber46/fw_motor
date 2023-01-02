@@ -19,7 +19,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 align="center">Detail Motor</h4>
+          <h2 align="center">Detail Motor</h2>
         </div>
         <div class="car-body">
           <div class="row">

@@ -52,7 +52,9 @@
           </table>
         </div>
       @else
-        <h3 class="text-center">Maaf datanya tidak ada :(</h3>
+        <div class="alert alert-danger">
+          <h3 align="center">Data is empty :(</h3>
+        </div>
       @endif
     </div>
   </div>
