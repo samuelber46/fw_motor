@@ -32,12 +32,14 @@ class OrderController extends Controller
             Alert::error('Gagal', 'Stok tidak mencukupi');
             return redirect()->back()->with('error', 'Stok tidak mencukupi');
         }
-        //Check if the user has already ordered the motor
+        //Check if the user has already ordered the motor with status 0
+        // status 0 = belum checkout
         $check_order = Order::where('user_id', auth()->user()->id)
             ->where('status', 0)
             ->first();
-        
-        if(empty($check_order)){
+
+        //if order is empty, create new order
+        if (empty($check_order)) {
             $motor = Motor::where('id', $id)->first();
             $order = new Order();
             $order->user_id = auth()->user()->id;
@@ -45,8 +47,7 @@ class OrderController extends Controller
             $order->status = 0;
             $order->jumlah_harga = $request->jumlah * $motor->harga;
             $order->save();
-        }
-        else{
+        } else {
             $order = Order::where('user_id', auth()->user()->id)
                 ->where('status', 0)
                 ->first();
@@ -67,8 +68,7 @@ class OrderController extends Controller
             $orderDetail->jumlah = $request->jumlah;
             $orderDetail->jumlah_harga = $request->jumlah * $motor->harga;
             $orderDetail->save();
-        }
-        else{
+        } else {
             $orderDetail = OrderDetail::where('order_id', $order->id)
                 ->where('motor_id', $id)
                 ->first();
@@ -86,8 +86,7 @@ class OrderController extends Controller
         $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
         if (!empty($order)) {
             $orderDetails = OrderDetail::where('order_id', $order->id)->get();
-        }
-        else{
+        } else {
             $orderDetails = null;
         }
         return view('order.checkout', compact('order', 'orderDetails'));
@@ -99,11 +98,13 @@ class OrderController extends Controller
         $orderDetail = OrderDetail::where('id', $id)->first();
         $order = Order::where('id', $orderDetail->order_id)->first();
         $order->jumlah_harga = $order->jumlah_harga - $orderDetail->jumlah_harga;
+        if ($order->jumlah_harga == 0) {
+            $order->delete();
+        }
         $order->update();
         $orderDetail->delete();
         Alert::success('Berhasil', 'Pesanan berhasil dihapus');
         return redirect()->route('checkout');
-        
     }
 
     public function confirm_checkout()

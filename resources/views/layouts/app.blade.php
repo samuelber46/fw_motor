@@ -41,10 +41,10 @@
               <a class="nav-link d-flex align-items-center {{ Route::currentRouteName() === 'home' ? 'active' : '' }}"
                 href="{{ url('home') }}"><i class="material-icons">explore</i>Explore</a>
             </li>
-            @Auth
+            @Auth {{-- Jika user terautentikasi --}}
               @if (Auth::user()->is_admin)
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center {{ str_contains(Route::currentRouteName(), 'motor') ? 'active' : '' }}"
+                  <a class="nav-link d-flex align-items-center {{ str_contains(Route::currentRouteName(), 'Motor') ? 'active' : '' }}"
                     href="{{ url('motor') }}"><i class="material-icons">two_wheeler</i>Motor</a>
                 </li>
               @else

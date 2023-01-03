@@ -47,7 +47,7 @@
           <img src="images/2010631170119.png" class="card-img-top" alt="samuel">
           <div class="card-body">
             <h5 class="card-title">Samuel Beryl Enrico R.</h5>
-            <p class="card-text">2010631170119 | 5B Informatika</p>
+            <p class="card-text">2010631170119 | 5E Informatika</p>
           </div>
         </div>
       </div>

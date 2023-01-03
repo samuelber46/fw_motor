@@ -37,7 +37,6 @@ Route::get('account', [App\Http\Controllers\AccountController::class, 'index'])-
 Route::post('account', [App\Http\Controllers\AccountController::class, 'update']);
 
 // Make route group for motor that can only accessed by admin
-
 Route::group(['middleware' => ['auth', 'is_admin'], "prefix" => "motor"], function () {
     Route::get('/', [App\Http\Controllers\MotorController::class, 'index'])->name('Motor');
     Route::get('/create', [App\Http\Controllers\MotorController::class, 'create'])->name('Tambah Motor');

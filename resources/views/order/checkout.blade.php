@@ -12,7 +12,6 @@
             @if (!empty($orderDetails))
               <table class="table table-border text-center mt-3">
                 <thead>
-                  <th>
                   <th>No</th>
                   <th>Image</th>
                   <th>Nama Motor</th>
